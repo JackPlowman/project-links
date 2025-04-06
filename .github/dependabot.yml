@@ -31,3 +31,18 @@ updates:
         update-types:
           - "patch"
           - "minor"
+
+  - package-ecosystem: "pip"
+    directory: "tests"
+    schedule:
+      interval: "daily"
+      time: "01:00"
+      timezone: "Europe/London"
+    target-branch: "main"
+    groups:
+      python:
+        patterns:
+          - "*"
+        update-types:
+          - "patch"
+          - "minor"

@@ -91,6 +91,35 @@ jobs:
       - name: Check Justfile Format
         run: just format-check
 
+  run-typescript-code-checks:
+    name: Run TypeScript Code Checks
+    runs-on: ubuntu-latest
+    permissions:
+      statuses: write
+      security-events: write
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4.2.2
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Setup Website Dependencies
+        uses: ./.github/actions/setup-website-dependencies
+      - name: Run ESLint
+        env:
+          SARIF_ESLINT_IGNORE_SUPPRESSED: "true"
+        run: just website::eslint-with-sarif
+        continue-on-error: true
+      - name: Upload analysis results to GitHub
+        uses: github/codeql-action/upload-sarif@v3.28.15
+        with:
+          sarif_file: website/eslint-results.sarif
+          wait-for-processing: true
+      - name: Run Prettier
+        run: just website::prettier-check
+      - name: Run ESLint
+        run: just website::lint
+
   run-zizmor:
     name: Check GitHub Actions with zizmor
     runs-on: ubuntu-latest

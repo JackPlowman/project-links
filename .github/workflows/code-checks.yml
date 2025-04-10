@@ -120,6 +120,42 @@ jobs:
       - name: Run ESLint
         run: just website::lint
 
+  run-python-test-code-checks:
+    name: Run Python Test Code Checks
+    runs-on: ubuntu-latest
+    permissions:
+      statuses: write
+      security-events: write
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4.2.2
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Set up dependencies
+        uses: ./.github/actions/setup-test-dependencies
+      - name: Generate Ruff Sarif
+        run: just tests::ruff-lint-check
+        env:
+          RUFF_OUTPUT_FORMAT: "sarif"
+          RUFF_OUTPUT_FILE: "ruff-results.sarif"
+        continue-on-error: true
+      - name: Upload Ruff analysis results to GitHub
+        uses: github/codeql-action/upload-sarif@v3.28.15
+        with:
+          sarif_file: tests/ruff-results.sarif
+          wait-for-processing: true
+      - name: Validates Pyproject
+        run: just tests::pyproject-check
+      - name: Check Python Code Format (Ruff)
+        run: just tests::ruff-format-check
+        env:
+          RUFF_OUTPUT_FORMAT: "github"
+      - name: Check Python Code Linting (Ruff)
+        run: just tests::ruff-lint-check
+        env:
+          RUFF_OUTPUT_FORMAT: "github"
+
   run-zizmor:
     name: Check GitHub Actions with zizmor
     runs-on: ubuntu-latest

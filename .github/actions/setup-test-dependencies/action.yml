@@ -1,0 +1,19 @@
+name: "Setup Test Dependencies"
+description: "Installs dependencies for the project"
+
+runs:
+  using: "composite"
+  steps:
+    - name: Set up Just
+      uses: extractions/setup-just@v3
+    - name: Install Python and UV
+      uses: astral-sh/setup-uv@v5.4.1
+      with:
+        pyproject-file: "tests/pyproject.toml"
+        enable-cache: true
+    - name: Install Playwright Dependencies
+      shell: bash
+      run: just tests::playwright-install-minimum
+    - name: Install Python Dependencies
+      shell: bash
+      run: just tests::install

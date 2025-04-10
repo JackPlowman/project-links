@@ -8,7 +8,7 @@ install:
 
 # Run End-to-End Tests
 run:
-    PROJECT_URL=https://jackplowman.github.io/github-stats \
+    PROJECT_URL=https://jackplowman.github.io/project-links \
     uv run pytest ui -vv --reruns 2
 
 # Run End-to-End Tests with dashboard running locally

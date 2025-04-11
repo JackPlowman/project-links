@@ -18,7 +18,7 @@ updates:
           - "minor"
 
   - package-ecosystem: "npm"
-    directory: "dashboard"
+    directory: "website"
     schedule:
       interval: "daily"
       time: "01:00"

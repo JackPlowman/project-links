@@ -37,7 +37,7 @@ export const LinkList: FC = () => {
             href={url}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center rounded-lg bg-gray-50 p-4 shadow transition-shadow duration-200 hover:shadow-md"
+            className="flex items-center rounded-lg bg-stone-100 p-4 shadow transition-shadow duration-200 hover:shadow-md"
             aria-label={`Link to ${title}`}
           >
             <img
@@ -45,7 +45,7 @@ export const LinkList: FC = () => {
               alt={`${title} logo`}
               className="mr-4 h-8 w-8"
             />
-            <span className="text-lg text-gray-800">{title}</span>
+            <span className="text-lg text-stone-800">{title}</span>
           </a>
         </li>
       ))}

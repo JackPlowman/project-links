@@ -3,9 +3,9 @@ import { LinkList } from "./LinkList"
 
 const App: FC = () => {
   return (
-    <div className="min-h-screen bg-gradient-red">
+    <div className="bg-gradient-red min-h-screen">
       <header
-        className="flex min-h-screen flex-col items-center p-4 bg-stone-300"
+        className="flex min-h-screen flex-col items-center bg-stone-300 p-4"
         style={{ paddingTop: "25vh" }}
       >
         <h1

@@ -31,24 +31,24 @@ const links: LinkItem[] = [
 export const LinkList: FC = () => {
   return (
     <ul className="w-full max-w-md space-y-6" aria-label="List of Links">
-    {links.map(({ id, title, url, imageUrl }) => (
-      <li key={id}>
-        <a
-          href={url}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex items-center rounded-lg bg-gray-50 p-4 shadow transition-shadow duration-200 hover:shadow-md"
-          aria-label={`Link to ${title}`}
-        >
-          <img
-            src={imageUrl}
-            alt={`${title} logo`}
-            className="mr-4 h-8 w-8"
-          />
-          <span className="text-lg text-gray-800">{title}</span>
-        </a>
-      </li>
-    ))}
-  </ul>
+      {links.map(({ id, title, url, imageUrl }) => (
+        <li key={id}>
+          <a
+            href={url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center rounded-lg bg-gray-50 p-4 shadow transition-shadow duration-200 hover:shadow-md"
+            aria-label={`Link to ${title}`}
+          >
+            <img
+              src={imageUrl}
+              alt={`${title} logo`}
+              className="mr-4 h-8 w-8"
+            />
+            <span className="text-lg text-gray-800">{title}</span>
+          </a>
+        </li>
+      ))}
+    </ul>
   )
 }

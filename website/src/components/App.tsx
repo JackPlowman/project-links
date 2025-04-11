@@ -1,9 +1,6 @@
 import { FC } from "react"
 import { LinkList } from "./LinkList"
 
-
-
-
 const App: FC = () => {
   return (
     <div className="min-h-screen bg-white">

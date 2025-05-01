@@ -9,8 +9,7 @@ runs:
     - name: Install Python and UV
       uses: astral-sh/setup-uv@6b9c6063abd6010835644d4c2e1bef4cf5cd0fca # v6.0.1
       with:
-        pyproject-file: "tests/pyproject.toml"
-        enable-cache: true
+        working-directory: tests
     - name: Install Playwright Dependencies
       shell: bash
       run: just tests::playwright-install-minimum

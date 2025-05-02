@@ -1,0 +1,86 @@
+{
+  "version": "0.18.1",
+  "uuid": "ed6bab51-6656-405e-a71b-7213f0b1aac2",
+  "timestamp": "2025-05-02T19:30:40+00:00",
+  "root": "/github/workspace",
+  "repository": {
+    "owner": "JackPlowman",
+    "name": "project-links",
+    "branch": "dependabot/github_actions/dot-github/actions/setup-website-dependencies/main/github-actions-37cd5763f6"
+  },
+  "codebase": {
+    "totals": {
+      "JavaScript": {
+        "files": 2,
+        "lines_of_code": 0,
+        "functions": 0,
+        "hard_to_maintain": 0,
+        "unmaintainable": 0
+      },
+      "TypeScript": {
+        "files": 2,
+        "lines_of_code": 0,
+        "functions": 0,
+        "hard_to_maintain": 0,
+        "unmaintainable": 0
+      }
+    },
+    "tree": {
+      "./": {
+        "entries": [
+          "website/"
+        ],
+        "profile": [0, 0, 0, 0]
+      },
+      "website/": {
+        "entries": [
+          "prettier.config.js",
+          "eslint.config.js",
+          "vite.config.ts",
+          "src/"
+        ],
+        "profile": [0, 0, 0, 0]
+      },
+      "website/src/": {
+        "entries": [
+          "vite-env.d.ts"
+        ],
+        "profile": [0, 0, 0, 0]
+      }
+    },
+    "files": {
+      "website/prettier.config.js": {
+        "checksum": "ace58ac86359194fba521203c3828c4d",
+        "language": "JavaScript",
+        "loc": 0,
+        "profile": [0, 0, 0, 0],
+        "measurements": [
+        ]
+      },
+      "website/eslint.config.js": {
+        "checksum": "1fa2df3ae1623ae03d975193c093fa8d",
+        "language": "JavaScript",
+        "loc": 0,
+        "profile": [0, 0, 0, 0],
+        "measurements": [
+        ]
+      },
+      "website/vite.config.ts": {
+        "checksum": "7508d74317e835c474548a212f44f128",
+        "language": "TypeScript",
+        "loc": 0,
+        "profile": [0, 0, 0, 0],
+        "measurements": [
+        ]
+      },
+      "website/src/vite-env.d.ts": {
+        "checksum": "0352474ba2918efe13895edbc3780d94",
+        "language": "TypeScript",
+        "loc": 0,
+        "profile": [0, 0, 0, 0],
+        "measurements": [
+        ]
+      }
+    }
+  }
+}

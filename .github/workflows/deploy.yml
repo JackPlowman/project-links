@@ -31,6 +31,8 @@ jobs:
           persist-credentials: false
       - name: Setup Website Dependencies
         uses: ./.github/actions/setup-website-dependencies
+      - name: Build Website
+        run: just website::build
       - name: Setup Pages
         uses: actions/configure-pages@v5.0.0
       - name: Upload artifact

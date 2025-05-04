@@ -14,26 +14,8 @@ concurrency:
   group: ${{ github.workflow }}
 
 jobs:
-  build-site:
+  build-and-deploy:
     name: Build Site
-    runs-on: ubuntu-latest
-    permissions:
-      id-token: write
-      pages: write
-    steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v4.2.2
-        with:
-          fetch-depth: 0
-          persist-credentials: false
-      - name: Install, build, and upload your site
-        uses: withastro/action@56781b97402ce0487b7e61ce2cb960c0e2cc5289 # v3.0.2
-        with:
-          path: website
-
-  deploy:
-    name: Deploy to GitHub Pages
-    needs: build-site
     runs-on: ubuntu-latest
     permissions:
       id-token: write
@@ -42,6 +24,21 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4.2.2
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Setup Website Dependencies
+        uses: ./.github/actions/setup-website-dependencies
+      - name: Build Website
+        run: just website::build
+      - name: Setup Pages
+        uses: actions/configure-pages@v5.0.0
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3.0.1
+        with:
+          path: "website/dist"
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4.0.5
@@ -49,7 +46,7 @@ jobs:
   link-tests:
     name: Link Tests
     runs-on: ubuntu-latest
-    needs: deploy
+    needs: build-and-deploy
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4.2.2

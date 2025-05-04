@@ -6,6 +6,10 @@
 install:
     npm install
 
+# Install Node Dependencies
+ci:
+    npm ci
+
 # Start the development server
 dev:
     npm run dev

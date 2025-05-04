@@ -16,4 +16,4 @@ runs:
 
     - name: Install Website Dependencies
       shell: bash
-      run: just website::install
+      run: just website::ci

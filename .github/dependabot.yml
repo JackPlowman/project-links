@@ -8,7 +8,7 @@ updates:
       - ".github/actions/setup-website-dependencies"
     schedule:
       interval: "cron"
-      cronjob: "30 7,12,17 * * *"
+      cronjob: "30 7 * * *"
     target-branch: "main"
     groups:
       github-actions:
@@ -22,7 +22,7 @@ updates:
     directory: "website"
     schedule:
       interval: "cron"
-      cronjob: "30 7,12,17 * * *"
+      cronjob: "30 7 * * *"
     target-branch: "main"
     groups:
       typescript:
@@ -36,7 +36,7 @@ updates:
     directory: "tests"
     schedule:
       interval: "cron"
-      cronjob: "30 7,12,17 * * *"
+      cronjob: "30 7 * * *"
     target-branch: "main"
     groups:
       python:

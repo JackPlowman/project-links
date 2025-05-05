@@ -50,7 +50,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        browser: [firefox, chromium]
+        browser: [firefox, chromium, webkit]
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4.2.2

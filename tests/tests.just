@@ -24,7 +24,7 @@ run-local:
 
 # Install playwright dependencies
 playwright-install:
-    uv run playwright install
+    uv run playwright install --with-deps
 
 # Remove all compiled Python files
 clean:

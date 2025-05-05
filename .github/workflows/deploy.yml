@@ -53,8 +53,8 @@ jobs:
         with:
           fetch-depth: 0
           persist-credentials: false
-      - name: Set up Python Dependencies
-        uses: ./.github/actions/setup-python-dependencies
+      - name: Set up Python Tests Dependencies
+        uses: ./.github/actions/setup-test-dependencies
       - name: Install Playwright Dependencies
         shell: bash
         run: just tests::playwright-install

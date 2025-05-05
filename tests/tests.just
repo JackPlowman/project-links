@@ -26,8 +26,6 @@ run-local:
 playwright-install:
     uv run playwright install
 
-
-
 # Remove all compiled Python files
 clean:
     find . \( \

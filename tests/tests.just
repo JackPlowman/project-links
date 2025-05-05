@@ -1,21 +1,27 @@
 # ------------------------------------------------------------------------------
-# General Commands
+# Environment Variables
 # ------------------------------------------------------------------------------
 
-DEFAULT_PROJECT_URL:="https://jackplowman.github.io/project-links"
+export DEFAULT_PROJECT_URL := "https://jackplowman.github.io/project-links"
+
+# ------------------------------------------------------------------------------
+# General Commands
+# ------------------------------------------------------------------------------
 
 # Install All Python Dependencies
 install:
     uv sync --all-extras
 
 # Run End-to-End Tests
-run $project_url=DEFAULT_PROJECT_URL $browser="chromium":
-    export PROJECT_URL=${project_url}
+run $PROJECT_URL=DEFAULT_PROJECT_URL $browser="chromium":
     uv run pytest ui -vv --reruns 2 --browser ${browser}
 
 # Run End-to-End Tests with dashboard running locally
 run-local $project_url="http://localhost:8000":
     just tests::run ${project_url}
+
+run-ci $browser:
+    just tests::run $DEFAULT_PROJECT_URL ${browser}
 
 # Install playwright dependencies
 playwright-install:

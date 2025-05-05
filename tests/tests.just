@@ -20,6 +20,7 @@ run $PROJECT_URL=DEFAULT_PROJECT_URL $browser="chromium":
 run-local $project_url="http://localhost:8000":
     just tests::run ${project_url}
 
+# Run End-to-End Tests in a specific browser
 run-ci $browser:
     just tests::run $DEFAULT_PROJECT_URL ${browser}
 

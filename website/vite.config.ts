@@ -5,6 +5,12 @@ import Sitemap from "vite-plugin-sitemap"
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [react(), tailwindcss(), Sitemap()],
+  plugins: [
+    react(),
+    tailwindcss(),
+    Sitemap({
+      hostname: "https://jackplowman.github.io/project-links/",
+    }),
+  ],
   base: "/project-links/",
 })

@@ -7,9 +7,8 @@ updates:
       - ".github/actions/setup-test-dependencies"
       - ".github/actions/setup-website-dependencies"
     schedule:
-      interval: "daily"
-      time: "01:00"
-      timezone: "Europe/London"
+      interval: "cron"
+      cronjob: "30 7 * * *"
     target-branch: "main"
     groups:
       github-actions:
@@ -22,9 +21,8 @@ updates:
   - package-ecosystem: "npm"
     directory: "website"
     schedule:
-      interval: "daily"
-      time: "01:00"
-      timezone: "Europe/London"
+      interval: "cron"
+      cronjob: "30 7 * * *"
     target-branch: "main"
     groups:
       typescript:
@@ -37,9 +35,8 @@ updates:
   - package-ecosystem: "uv"
     directory: "tests"
     schedule:
-      interval: "daily"
-      time: "01:00"
-      timezone: "Europe/London"
+      interval: "cron"
+      cronjob: "30 7 * * *"
     target-branch: "main"
     groups:
       python:

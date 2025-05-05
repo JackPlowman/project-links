@@ -6,10 +6,15 @@
 install:
     uv sync --all-extras
 
-# Run End-to-End Tests
+# Run End-to-End Tests in chromium
 run:
     PROJECT_URL=https://jackplowman.github.io/project-links \
     uv run pytest ui -vv --reruns 2
+
+# Run End-to-End Tests in browser
+run-in-browser:
+    PROJECT_URL=https://jackplowman.github.io/project-links \
+    uv run pytest ui -vv --reruns 2 --browser ${BROWSER}
 
 # Run End-to-End Tests with dashboard running locally
 run-local:
@@ -21,9 +26,7 @@ run-local:
 playwright-install:
     uv run playwright install
 
-# Install playwright minimum dependencies
-playwright-install-minimum:
-    uv run playwright install --with-deps --only-shell chromium
+
 
 # Remove all compiled Python files
 clean:

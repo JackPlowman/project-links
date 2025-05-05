@@ -15,7 +15,7 @@ concurrency:
 
 jobs:
   build-and-deploy:
-    name: Build Site
+    name: Build Site and Deploy to GitHub Pages
     runs-on: ubuntu-latest
     permissions:
       id-token: write

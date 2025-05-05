@@ -69,6 +69,28 @@ jobs:
         env:
           BROWSER: ${{ matrix.browser }}
 
+  ui-tests-webkit:
+    name: Run UI Tests in WebKit
+    runs-on: macos-latest
+    needs: build-and-deploy
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4.2.2
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Set up Python Tests Dependencies
+        uses: ./.github/actions/setup-test-dependencies
+        with:
+          setup-browsers: true
+      - name: Install Playwright Dependencies
+        shell: bash
+        run: just tests::playwright-install
+      - name: Run UI Tests
+        run: just tests::run-in-browser
+        env:
+          BROWSER: webkit
+
   link-tests:
     name: Link Tests
     runs-on: ubuntu-latest

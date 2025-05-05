@@ -19,7 +19,7 @@ runs:
     - name: Install Playwright Dependencies
       if: ${{ inputs.setup-browsers == 'true' }}
       shell: bash
-      run: just tests::playwright-install-minimum
+      run: just tests::playwright-install
     - name: Install Python Dependencies
       shell: bash
       run: just tests::install

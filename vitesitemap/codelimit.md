@@ -3,9 +3,9 @@
 ### Overview
 | **Language** | **Files** | **Functions** | **Lines of Code** | **⚠** | **⛌** |
 | --- | ---: | ---: | ---: | ---: | ---: |
+| TypeScript | 2 | 1 | 6 | 0 | 0 |
 | JavaScript | 2 | 0 | 0 | 0 | 0 |
-| TypeScript | 2 | 0 | 0 | 0 | 0 |
-| **Totals** | **4** | **0** | **0** | **0** | **0** |
+| **Totals** | **4** | **1** | **6** | **0** | **0** |
 
 ### Summary
 | **Easy / Verbose** | **Hard-to-maintain ⚠** | **Unmaintainable ⛌** |

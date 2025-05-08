@@ -1,0 +1,86 @@
+{
+  "version": "0.18.1",
+  "uuid": "1b95b41e-c438-48ec-b7a1-92691a2e25ec",
+  "timestamp": "2025-05-08T17:57:34+00:00",
+  "root": "/github/workspace",
+  "repository": {
+    "owner": "JackPlowman",
+    "name": "project-links",
+    "branch": "vite"
+  },
+  "codebase": {
+    "totals": {
+      "JavaScript": {
+        "files": 2,
+        "lines_of_code": 0,
+        "functions": 0,
+        "hard_to_maintain": 0,
+        "unmaintainable": 0
+      },
+      "TypeScript": {
+        "files": 2,
+        "lines_of_code": 0,
+        "functions": 0,
+        "hard_to_maintain": 0,
+        "unmaintainable": 0
+      }
+    },
+    "tree": {
+      "./": {
+        "entries": [
+          "website/"
+        ],
+        "profile": [0, 0, 0, 0]
+      },
+      "website/": {
+        "entries": [
+          "prettier.config.js",
+          "vite.config.ts",
+          "eslint.config.js",
+          "src/"
+        ],
+        "profile": [0, 0, 0, 0]
+      },
+      "website/src/": {
+        "entries": [
+          "vite-env.d.ts"
+        ],
+        "profile": [0, 0, 0, 0]
+      }
+    },
+    "files": {
+      "website/prettier.config.js": {
+        "checksum": "ace58ac86359194fba521203c3828c4d",
+        "language": "JavaScript",
+        "loc": 0,
+        "profile": [0, 0, 0, 0],
+        "measurements": [
+        ]
+      },
+      "website/vite.config.ts": {
+        "checksum": "4b891a9866e55047d2f76f62880dcaae",
+        "language": "TypeScript",
+        "loc": 0,
+        "profile": [0, 0, 0, 0],
+        "measurements": [
+        ]
+      },
+      "website/eslint.config.js": {
+        "checksum": "1fa2df3ae1623ae03d975193c093fa8d",
+        "language": "JavaScript",
+        "loc": 0,
+        "profile": [0, 0, 0, 0],
+        "measurements": [
+        ]
+      },
+      "website/src/vite-env.d.ts": {
+        "checksum": "0352474ba2918efe13895edbc3780d94",
+        "language": "TypeScript",
+        "loc": 0,
+        "profile": [0, 0, 0, 0],
+        "measurements": [
+        ]
+      }
+    }
+  }
+}

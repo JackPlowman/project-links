@@ -1,16 +1,23 @@
 import tailwindcss from "@tailwindcss/vite"
 import react from "@vitejs/plugin-react"
 import { defineConfig } from "vite"
-import Sitemap from "vite-plugin-sitemap"
+import { generateSitemap } from 'sitemap-ts';
+
 
 // https://vite.dev/config/
 export default defineConfig({
+  base: "/project-links/",
   plugins: [
     react(),
     tailwindcss(),
-    Sitemap({
-      hostname: "https://jackplowman.github.io/project-links/",
-    }),
+        {
+      name: 'generate-sitemap',
+      closeBundle() {
+        generateSitemap({
+          hostname: 'https://jackplowman.github.io/',
+          readable: true,
+        });
+      },
+    }
   ],
-  base: "/project-links/",
 })

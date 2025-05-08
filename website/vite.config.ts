@@ -11,6 +11,7 @@ export default defineConfig({
     tailwindcss(),
     Sitemap({
       hostname: "https://jackplowman.github.io/",
+      basePath: "/project-links",
     }),
   ],
 })

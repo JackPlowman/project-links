@@ -10,8 +10,7 @@ export default defineConfig({
     react(),
     tailwindcss(),
     Sitemap({
-      hostname: "https://jackplowman.github.io\\/project-links",
-      basePath: "/project-links",
+      hostname: "https://jackplowman.github.io/project-links",
     }),
   ],
 })

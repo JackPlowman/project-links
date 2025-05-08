@@ -1,7 +1,7 @@
 {
   "version": "0.18.1",
-  "uuid": "d61c6b5d-2205-4e51-afd6-54b87e8e722f",
-  "timestamp": "2025-05-08T18:45:58+00:00",
+  "uuid": "1d47291d-458e-414b-b01c-a6081593738f",
+  "timestamp": "2025-05-08T18:49:14+00:00",
   "root": "/github/workspace",
   "repository": {
     "owner": "JackPlowman",
@@ -19,8 +19,8 @@
       },
       "TypeScript": {
         "files": 2,
-        "lines_of_code": 0,
-        "functions": 0,
+        "lines_of_code": 6,
+        "functions": 1,
         "hard_to_maintain": 0,
         "unmaintainable": 0
       }
@@ -30,7 +30,7 @@
         "entries": [
           "website/"
         ],
-        "profile": [0, 0, 0, 0]
+        "profile": [6, 0, 0, 0]
       },
       "website/": {
         "entries": [
@@ -39,7 +39,7 @@
           "eslint.config.js",
           "src/"
         ],
-        "profile": [0, 0, 0, 0]
+        "profile": [6, 0, 0, 0]
       },
       "website/src/": {
         "entries": [
@@ -58,11 +58,12 @@
         ]
       },
       "website/vite.config.ts": {
-        "checksum": "795b41a3ee8d5167dfda4175a6caa3da",
+        "checksum": "4bc8cbce80a922645ffa80497d3e6bf0",
         "language": "TypeScript",
-        "loc": 0,
-        "profile": [0, 0, 0, 0],
+        "loc": 6,
+        "profile": [6, 0, 0, 0],
         "measurements": [
+          {"unit_name": "closeBundle", "start": {"line": 15, "column": 7}, "end": {"line": 20, "column": 8}, "value": 6}
         ]
       },
       "website/eslint.config.js": {

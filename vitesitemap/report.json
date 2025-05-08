@@ -1,0 +1,86 @@
+{
+  "version": "0.18.1",
+  "uuid": "bab6cf7a-2e21-4216-84c2-df8f6bec7f6b",
+  "timestamp": "2025-05-08T18:16:09+00:00",
+  "root": "/github/workspace",
+  "repository": {
+    "owner": "JackPlowman",
+    "name": "project-links",
+    "branch": "vitesitemap"
+  },
+  "codebase": {
+    "totals": {
+      "JavaScript": {
+        "files": 2,
+        "lines_of_code": 0,
+        "functions": 0,
+        "hard_to_maintain": 0,
+        "unmaintainable": 0
+      },
+      "TypeScript": {
+        "files": 2,
+        "lines_of_code": 0,
+        "functions": 0,
+        "hard_to_maintain": 0,
+        "unmaintainable": 0
+      }
+    },
+    "tree": {
+      "./": {
+        "entries": [
+          "website/"
+        ],
+        "profile": [0, 0, 0, 0]
+      },
+      "website/": {
+        "entries": [
+          "prettier.config.js",
+          "vite.config.ts",
+          "eslint.config.js",
+          "src/"
+        ],
+        "profile": [0, 0, 0, 0]
+      },
+      "website/src/": {
+        "entries": [
+          "vite-env.d.ts"
+        ],
+        "profile": [0, 0, 0, 0]
+      }
+    },
+    "files": {
+      "website/prettier.config.js": {
+        "checksum": "ace58ac86359194fba521203c3828c4d",
+        "language": "JavaScript",
+        "loc": 0,
+        "profile": [0, 0, 0, 0],
+        "measurements": [
+        ]
+      },
+      "website/vite.config.ts": {
+        "checksum": "a1dfdc07bb6f6ad6e4bc9793e85c5f37",
+        "language": "TypeScript",
+        "loc": 0,
+        "profile": [0, 0, 0, 0],
+        "measurements": [
+        ]
+      },
+      "website/eslint.config.js": {
+        "checksum": "1fa2df3ae1623ae03d975193c093fa8d",
+        "language": "JavaScript",
+        "loc": 0,
+        "profile": [0, 0, 0, 0],
+        "measurements": [
+        ]
+      },
+      "website/src/vite-env.d.ts": {
+        "checksum": "0352474ba2918efe13895edbc3780d94",
+        "language": "TypeScript",
+        "loc": 0,
+        "profile": [0, 0, 0, 0],
+        "measurements": [
+        ]
+      }
+    }
+  }
+}

@@ -1,7 +1,7 @@
 {
   "version": "0.18.1",
-  "uuid": "9f92cec4-c5de-4e85-89da-1b381a4d54d1",
-  "timestamp": "2025-06-08T18:40:34+00:00",
+  "uuid": "162a558a-133a-4bb3-9151-7936829a8116",
+  "timestamp": "2025-06-10T20:54:24+00:00",
   "root": "/github/workspace",
   "repository": {
     "owner": "JackPlowman",
@@ -10,17 +10,17 @@
   },
   "codebase": {
     "totals": {
-      "TypeScript": {
-        "files": 2,
-        "lines_of_code": 6,
-        "functions": 1,
-        "hard_to_maintain": 0,
-        "unmaintainable": 0
-      },
       "JavaScript": {
         "files": 2,
         "lines_of_code": 0,
         "functions": 0,
+        "hard_to_maintain": 0,
+        "unmaintainable": 0
+      },
+      "TypeScript": {
+        "files": 2,
+        "lines_of_code": 6,
+        "functions": 1,
         "hard_to_maintain": 0,
         "unmaintainable": 0
       }
@@ -34,9 +34,9 @@
       },
       "website/": {
         "entries": [
+          "eslint.config.js",
           "vite.config.ts",
           "prettier.config.js",
-          "eslint.config.js",
           "src/"
         ],
         "profile": [6, 0, 0, 0]
@@ -49,6 +49,14 @@
       }
     },
     "files": {
+      "website/eslint.config.js": {
+        "checksum": "1fa2df3ae1623ae03d975193c093fa8d",
+        "language": "JavaScript",
+        "loc": 0,
+        "profile": [0, 0, 0, 0],
+        "measurements": [
+        ]
+      },
       "website/vite.config.ts": {
         "checksum": "00c5bd8cec149fd9ccc90c97eaaa66b4",
         "language": "TypeScript",
@@ -60,14 +68,6 @@
       },
       "website/prettier.config.js": {
         "checksum": "ace58ac86359194fba521203c3828c4d",
-        "language": "JavaScript",
-        "loc": 0,
-        "profile": [0, 0, 0, 0],
-        "measurements": [
-        ]
-      },
-      "website/eslint.config.js": {
-        "checksum": "1fa2df3ae1623ae03d975193c093fa8d",
         "language": "JavaScript",
         "loc": 0,
         "profile": [0, 0, 0, 0],

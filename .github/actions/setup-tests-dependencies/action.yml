@@ -1,4 +1,4 @@
-name: "Setup Test Dependencies"
+name: "Setup Tests Dependencies"
 description: "Installs dependencies for the project"
 
 inputs:

@@ -23,7 +23,7 @@ jobs:
       actions: read
       pull-requests: write
       security-events: write
-    uses: JackPlowman/reusable-workflows/.github/workflows/common-code-checks.yml@e77e648233b977246ecdb30836e2360b33acd1d3 # v2025.09.16.01
+    uses: JackPlowman/reusable-workflows/.github/workflows/common-code-checks.yml@d14c0675f51e837362b7c522d50f2d0e9947024d # v2025.10.14.02
     secrets:
       workflow_github_token: ${{ secrets.GITHUB_TOKEN }}
 
@@ -141,6 +141,6 @@ jobs:
     strategy:
       matrix:
         language: [actions, typescript, python]
-    uses: JackPlowman/reusable-workflows/.github/workflows/codeql-analysis.yml@e77e648233b977246ecdb30836e2360b33acd1d3 # v2025.09.16.01
+    uses: JackPlowman/reusable-workflows/.github/workflows/codeql-analysis.yml@d14c0675f51e837362b7c522d50f2d0e9947024d # v2025.10.14.02
     with:
       language: ${{ matrix.language }}

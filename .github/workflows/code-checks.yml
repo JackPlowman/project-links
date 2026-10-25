@@ -31,6 +31,20 @@ jobs:
     secrets:
       workflow_github_token: ${{ secrets.GITHUB_TOKEN }}
 
+  actionlint-check:
+    name: Common Code Checks / Check GitHub Actions with Actionlint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Run Actionlint Hook
+        uses: j178/prek-action@44924fe9ef4a6f88253c4b6b1bf11c689d3ce53d # v3.1.0
+        with:
+          prek-version: "0.5.7"
+          extra-args: actionlint --all-files
+
   run-typescript-code-checks:
     name: Run TypeScript Code Checks
     runs-on: ubuntu-latest

@@ -10,7 +10,7 @@ export DEFAULT_PROJECT_URL := "https://jackplowman.github.io/project-links"
 
 # Install All Python Dependencies
 install:
-    uv sync --all-extras
+    uv sync --all-extras --locked
 
 # Run End-to-End Tests
 run $PROJECT_URL=DEFAULT_PROJECT_URL $browser="chromium":

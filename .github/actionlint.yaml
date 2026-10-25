@@ -1,0 +1,6 @@
+# GitHub supports self-repository actions; actionlint 1.7.12 still rejects them.
+# Keep this exception limited to the two valid local composite actions.
+paths:
+  .github/workflows/*.yml:
+    ignore:
+      - 'specifying action "\$/\.github/actions/setup-(tests|website)-dependencies" in invalid format because ref is missing'

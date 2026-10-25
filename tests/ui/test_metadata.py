@@ -1,4 +1,8 @@
-from playwright.sync_api import Page
+# Copyright (c) 2026 Jack Plowman
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from playwright.sync_api import Page
 from requests import get
 
 from .environment_variables import project_url

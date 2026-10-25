@@ -4,13 +4,17 @@ on:
   push:
     branches: [main]
   pull_request:
-    types: [opened, synchronize]
+    types: [opened, reopened, synchronize]
   schedule:
     - cron: "0 0 * * *"
 
 permissions:
-  contents: read
-  packages: read
+  contents: read # Read repository files for checkout and analysis.
+  packages: read # Read packages used by shared checks.
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
 
 env:
   FORCE_COLOR: 1
@@ -19,11 +23,11 @@ jobs:
   common-code-checks:
     name: Common Code Checks
     permissions:
-      contents: read
-      actions: read
-      pull-requests: write
-      security-events: write
-    uses: JackPlowman/reusable-workflows/.github/workflows/common-code-checks.yml@cf7a740a05c8b7a6cc3694844d6fa54cfb1b490f # v2026.01.18.03
+      contents: read # Read repository files for checkout and analysis.
+      actions: read # Read workflow metadata for shared checks.
+      pull-requests: write # Maintain pull request labels and metadata.
+      security-events: write # Upload security analysis results.
+    uses: JackPlowman/reusable-workflows/.github/workflows/common-code-checks.yml@f82d61d53648ae90f8a0406c0f4bbf1aef332337 # v2026.10.25.01
     secrets:
       workflow_github_token: ${{ secrets.GITHUB_TOKEN }}
 
@@ -31,23 +35,23 @@ jobs:
     name: Run TypeScript Code Checks
     runs-on: ubuntu-latest
     permissions:
-      statuses: write
-      security-events: write
+      contents: read # Read repository files for checkout and analysis.
+      security-events: write # Upload security analysis results.
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6.0.1
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           fetch-depth: 0
           persist-credentials: false
       - name: Setup Website Dependencies
-        uses: ./.github/actions/setup-website-dependencies
+        uses: $/.github/actions/setup-website-dependencies
       - name: Run ESLint
         env:
           SARIF_ESLINT_IGNORE_SUPPRESSED: "true"
         run: just website::eslint-with-sarif
         continue-on-error: true
       - name: Upload analysis results to GitHub
-        uses: github/codeql-action/upload-sarif@cdefb33c0f6224e58673d9004f47f7cb3e328b89 # v4.31.10
+        uses: github/codeql-action/upload-sarif@9b3254085494b55a0f7c4c2b3d2d52cc712ce370 # v4.39.1
         with:
           sarif_file: website/eslint-results.sarif
           wait-for-processing: true
@@ -60,16 +64,16 @@ jobs:
     name: Run Python Tests Lint Checks
     runs-on: ubuntu-latest
     permissions:
-      statuses: write
-      security-events: write
+      contents: read # Read repository files for checkout and analysis.
+      security-events: write # Upload security analysis results.
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6.0.1
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           fetch-depth: 0
           persist-credentials: false
       - name: Set up dependencies
-        uses: ./.github/actions/setup-tests-dependencies
+        uses: $/.github/actions/setup-tests-dependencies
       - name: Generate Ruff Sarif
         run: just tests::ruff-lint-check
         env:
@@ -77,7 +81,7 @@ jobs:
           RUFF_OUTPUT_FILE: "ruff-results.sarif"
         continue-on-error: true
       - name: Upload Ruff analysis results to GitHub
-        uses: github/codeql-action/upload-sarif@cdefb33c0f6224e58673d9004f47f7cb3e328b89 # v4.31.10
+        uses: github/codeql-action/upload-sarif@9b3254085494b55a0f7c4c2b3d2d52cc712ce370 # v4.39.1
         with:
           sarif_file: tests/ruff-results.sarif
           wait-for-processing: true
@@ -91,12 +95,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6.0.1
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           fetch-depth: 0
           persist-credentials: false
       - name: Set up dependencies
-        uses: ./.github/actions/setup-tests-dependencies
+        uses: $/.github/actions/setup-tests-dependencies
       - name: Check Python Code Format (Ruff)
         run: just tests::ruff-format-check
         env:
@@ -107,12 +111,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6.0.1
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           fetch-depth: 0
           persist-credentials: false
       - name: Set up dependencies
-        uses: ./.github/actions/setup-tests-dependencies
+        uses: $/.github/actions/setup-tests-dependencies
       - name: Check Python Code Types (ty) Checks
         run: just tests::ty-check
 
@@ -120,27 +124,64 @@ jobs:
     name: Run Python Tests Lockfile Check
     runs-on: ubuntu-latest
     permissions:
-      statuses: write
-      security-events: write
+      contents: read # Read repository files for checkout and analysis.
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6.0.1
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           fetch-depth: 0
           persist-credentials: false
       - name: Set up dependencies
-        uses: ./.github/actions/setup-tests-dependencies
+        uses: $/.github/actions/setup-tests-dependencies
       - name: Check UV Lockfile
         run: just tests::uv-lock-check
+
+  build-and-test-website:
+    name: Build and Test Website (${{ matrix.browser }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        browser: [chromium, firefox, webkit]
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Setup Website Dependencies
+        uses: $/.github/actions/setup-website-dependencies
+      - name: Build Website
+        run: just website::build
+      - name: Setup Test Dependencies
+        uses: $/.github/actions/setup-tests-dependencies
+        with:
+          setup-browsers: true
+      - name: Test built website
+        shell: bash
+        run: |
+          npm --prefix website run preview -- --host 127.0.0.1 --port 4173 &
+          preview_pid=$!
+          trap 'kill "$preview_pid"' EXIT
+          for attempt in {1..30}; do
+            if curl --fail --silent "$PROJECT_URL" >/dev/null; then
+              break
+            fi
+            sleep 1
+          done
+          cd tests
+          uv run --locked pytest ui -vv --browser "$BROWSER"
+        env:
+          BROWSER: ${{ matrix.browser }}
+          PROJECT_URL: http://127.0.0.1:4173/project-links
 
   codeql-checks:
     name: CodeQL Analysis
     permissions:
-      contents: read
-      security-events: write
+      contents: read # Read repository files for checkout and analysis.
+      security-events: write # Upload security analysis results.
     strategy:
       matrix:
         language: [actions, typescript, python]
-    uses: JackPlowman/reusable-workflows/.github/workflows/codeql-analysis.yml@cf7a740a05c8b7a6cc3694844d6fa54cfb1b490f # v2026.01.18.03
+    uses: JackPlowman/reusable-workflows/.github/workflows/codeql-analysis.yml@f82d61d53648ae90f8a0406c0f4bbf1aef332337 # v2026.10.25.01
     with:
       language: ${{ matrix.language }}

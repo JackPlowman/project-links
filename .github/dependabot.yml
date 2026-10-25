@@ -10,6 +10,8 @@ updates:
       interval: "cron"
       cronjob: "30 7 * * *"
       timezone: "Europe/London"
+    cooldown:
+      default-days: 7
     target-branch: "main"
     groups:
       github-actions:
@@ -29,6 +31,8 @@ updates:
       interval: "cron"
       cronjob: "30 7 * * *"
       timezone: "Europe/London"
+    cooldown:
+      default-days: 7
     target-branch: "main"
     groups:
       typescript:
@@ -45,6 +49,8 @@ updates:
       interval: "cron"
       cronjob: "30 7 * * *"
       timezone: "Europe/London"
+    cooldown:
+      default-days: 7
     target-branch: "main"
     groups:
       python:

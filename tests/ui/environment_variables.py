@@ -1,3 +1,4 @@
+# Copyright (c) 2026 Jack Plowman
 from os import getenv
 
 project_url = getenv("PROJECT_URL")
